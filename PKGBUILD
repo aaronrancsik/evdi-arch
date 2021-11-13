@@ -2,11 +2,12 @@
 # Contributor: PlusMinus
 
 pkgname=evdi
+_pkgver=devel
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux® kernel module that enables management of multiple screens."
 arch=('i686' 'x86_64')
-url="https://github.com/DisplayLink/evdi"
+url="https://github.com/infinytum/evdi"
 license=('GPL')
 groups=()
 depends=(glibc dkms libdrm)
@@ -19,12 +20,12 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=$pkgname.Changelog
-source=($pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/DisplayLink/evdi/archive/v$pkgver.tar.gz)
+source=($pkgname-$_pkgver-$pkgrel.tar.gz::https://github.com/infinytum/evdi/archive/$_pkgver.tar.gz)
 noextract=()
-md5sums=('e56d5acf08d67706e297a9a8c09e0a20')
+md5sums=('SKIP')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$_pkgver"
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -36,7 +37,7 @@ prepare() {
 
 build() {
 # We only need to build the library in this step, dkms will build the module
-cd "$pkgname-$pkgver/library"
+cd "$pkgname-$_pkgver/library"
 
 make
 }
@@ -46,7 +47,7 @@ package() {
 SRCDIR="$pkgdir/usr/src/$pkgname-$pkgver"	# This one is needed for dkms
 LIBNAME=lib$pkgname
 
-cd "$pkgname-$pkgver"
+cd "$pkgname-$_pkgver"
 
 install -D -m 755 library/$LIBNAME.so $pkgdir/usr/lib/$LIBNAME.so
 
