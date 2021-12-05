@@ -4,10 +4,10 @@
 pkgname=evdi
 _pkgver=devel
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Linux® kernel module that enables management of multiple screens."
 arch=('i686' 'x86_64')
-url="https://github.com/infinytum/evdi"
+url="https://github.com/DisplayLink/evdi"
 license=('GPL')
 groups=()
 depends=(glibc dkms libdrm)
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=$pkgname.Changelog
-source=($pkgname-$_pkgver-$pkgrel.tar.gz::https://github.com/infinytum/evdi/archive/$_pkgver.tar.gz)
+source=($pkgname-$_pkgver-$pkgrel.tar.gz::https://github.com/DisplayLink/evdi/archive/$_pkgver.tar.gz)
 noextract=()
 md5sums=('SKIP')
 
